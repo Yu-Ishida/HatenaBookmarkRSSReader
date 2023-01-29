@@ -1,0 +1,37 @@
+﻿<Window x:Name="MainWndow" x:Class="HatenaRSS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HatenaRSS"
+        mc:Ignorable="d"
+        Title="Hatena Bookmark " Height="450" Width="800" Loaded="MainWindow_Loaded">
+    <DockPanel>
+        <Menu x:Name="MainMenu" DockPanel.Dock="Top">
+            <MenuItem Header="ファイル(_X)">
+                <MenuItem Header="表示内容を CSV ファイルへエクスポート(_E)" Click="ExportCSVFIleMenu_Click"></MenuItem>
+                <MenuItem Header="終了(_X)" Click="ExitMenu_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="ヘルプ(_H)">
+                <MenuItem Header="バージョン情報(_A)" Click="VersionInfoMenu_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="MainGrid">
+            <Button x:Name="BtnReload" Content="更新" HorizontalAlignment="Left" Margin="375,6,0,0" VerticalAlignment="Top" Width="50" Height="30" Click="BtnReload_Click"/>
+            <ComboBox x:Name="CbCategory" SelectedValue="Key" DisplayMemberPath="Value" SelectedIndex="0" HorizontalAlignment="Left" Margin="67,12,0,0" VerticalAlignment="Top" Width="200"/>
+            <Label x:Name="LbCategoryNotice" Content="カテゴリ：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="RbHotEntry" Content="人気" HorizontalAlignment="Left" Margin="272,16,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <RadioButton x:Name="RbNewEntry" Content="新着" HorizontalAlignment="Left" Margin="320,16,0,0" VerticalAlignment="Top"/>
+            <DataGrid x:Name="DgContent" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,10,10" SelectionMode="Single" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="タイトル" Width="180"/>
+                    <DataGridHyperlinkColumn Header="ページURL" Width="180"/>
+                    <DataGridTextColumn Header="登録タグ" Width="180"/>
+                    <DataGridTextColumn Header="日付" Width="100"/>
+                    <DataGridTextColumn Header="概要" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label x:Name="LbUpdateTime" Content="最終更新日時: 未更新" HorizontalAlignment="Left" Margin="430,8,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </DockPanel>
+</Window>
