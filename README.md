@@ -1,0 +1,2 @@
+# HatenaBookmarkRSSReader
+はてなブックマークの RSS を取得して表示するアプリケーション
